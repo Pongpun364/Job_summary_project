@@ -1,0 +1,13 @@
+
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-row ">
+    <form  action="/search/" method="GET" class="w-100">
+    <input  class = "form-control form-control-dark w-100" id='search-query' name='q' type="text" 
+        placeholder="Search for job ..." aria-label="Search" value='{{ request.GET.q }}'
+        hx-get='/search/' hx-trigger='keyup changed delay:200ms' hx-target='#typeahead-results' />
+    </form>
+</nav>
+<div class='container'>
+    
+    <div id='typeahead-results'></div>
+</div>

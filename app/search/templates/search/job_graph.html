@@ -1,0 +1,181 @@
+{% extends 'search/base.html'%}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href={% static "css/graph_page.css" %}>
+{% endblock %}
+{% block header %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+{% endblock header %}
+
+{% block content %}
+
+
+<div class="container p-0 my-bg">
+    <div class="row ">
+        <div class="col-5 p-2 my-header my-2">
+            <h4 class="my-text"> RESULT FOR: {{ obj.job_search }}</h4>
+        </div>
+        <div class="col-lg-12  my-2 my-graph">
+            <div>
+                <canvas id="myChart" width="400" height="250"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-6 my-2 pl-0">
+            <div class="my-graph">
+                <canvas id="myChart2" width="400" height="400"></canvas>
+            </div>
+        </div>
+        
+        <div class="col-lg-6  my-2 pr-0">
+            <div class="my-graph">
+                <canvas id="myChart3" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+<script>
+    const labels = {{graph.skill.labels|safe}}
+    const data = {{graph.skill.data|safe}}
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '#Extracted Skill',
+                data: data,
+                backgroundColor: [
+                    'rgba(169, 50, 38, 0.35)',
+                    'rgba(203, 67, 53, 0.35)',
+                    'rgba(136, 78, 160, 0.35)',
+                    'rgba(125, 60, 152, 0.35)',
+                    'rgba(36, 113, 163, 0.35)',
+                    'rgba(46, 134, 193, 0.35)',
+                    'rgba(23, 165, 137, 0.35)',
+                    'rgba(34, 153, 84, 0.35)',
+                    'rgba(40, 180, 99, 0.35)',
+                    'rgba(212, 172, 13, 0.35)',
+                    'rgba(214, 137, 16, 0.35)',
+                ],
+                borderColor: [
+                'rgba(169, 50, 38, 1)',
+                'rgba(203, 67, 53, 1)',
+                'rgba(136, 78, 160, 1)',
+                'rgba(125, 60, 152, 1)',
+                'rgba(36, 113, 163, 1)',
+                'rgba(46, 134, 193, 1)',
+                'rgba(23, 165, 137, 1)',
+                'rgba(34, 153, 84, 1)',
+                'rgba(40, 180, 99, 1)',
+                'rgba(212, 172, 13, 1)',
+                'rgba(214, 137, 16, 1)',
+            ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    /* chart 2 */
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
+    
+    const labels2 = {{ graph.exp.labels|safe}}
+    const data2 = {
+      labels: labels2,
+      datasets: [
+        {
+          label: 'min exp.',
+          data: {{ graph.exp.min_exp|safe}},
+          borderColor: 'rgba(25, 111, 61, 1)',
+          backgroundColor: 'rgba(25, 111, 61, 0.5)',
+          borderWidth: 1,
+          order: 0
+        },
+        {
+          label: 'max exp.',
+          data: {{ graph.exp.max_exp|safe}},
+          borderColor: 'rgba(120, 40, 31 , 1)',
+          backgroundColor: 'rgba(120, 40, 31 , 0.4)',
+          borderWidth: 1,
+          order: 1
+        }
+      ]
+    };
+
+    const myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: data2,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Combined Line/Bar Chart'
+            }
+          }
+        },
+    });
+
+    /* chart 3 */
+    const ctx3 = document.getElementById('myChart3').getContext('2d');
+    
+    const labels3 = {{ graph.sal.labels|safe}}
+    const data3 = {
+      labels: labels3,
+      datasets: [
+        {
+          label: 'min salary',
+          data: {{ graph.sal.min_sal|safe}},
+          borderColor: 'rgba(214, 137, 16, 1)',
+          backgroundColor: 'rgba(214, 137, 16, 0.35)',
+          borderWidth: 1,
+          order: 0
+        },
+        {
+          label: 'max salary',
+          data: {{ graph.sal.max_sal|safe}},
+          borderColor: 'rgba(169, 50, 38, 1)',
+          backgroundColor: 'rgba(169, 50, 38, 0.35)',
+          borderWidth: 1,
+          order: 1
+        }
+      ]
+    };
+
+    const myChart3 = new Chart(ctx3, {
+        type: 'bar',
+        data: data3,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Combined Line/Bar Chart'
+            }
+          }
+        },
+    });
+
+
+
+    
+
+</script>
+
+
+{% endblock content %}

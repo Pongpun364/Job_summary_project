@@ -1,0 +1,22 @@
+/* .my-bg {
+    background-color: rgb(239, 241, 247);
+} */
+.my-header {
+    background-color: #fff;
+    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    
+}
+
+.my-graph {
+    background-color: #fff;
+    border-radius: 2rem;
+
+}
+
+.my-text {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(78, 78, 78);
+}
