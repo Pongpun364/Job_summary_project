@@ -42,6 +42,7 @@ def graph(request, word=None):
 def request_job(request):
     # print(request.POST)
     query = request.POST.get('query')
+    query = query.strip()
     print('query ==', query)
     result = post_job_request(keyword=query)
     if result['status'] == 'pending':
