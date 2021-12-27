@@ -25,10 +25,28 @@ body {
 .not-found {
   background-color: #fff;
   border-radius: 0.25rem !important;
+
 }
 
 .s-text {
   color: blue;
   font-weight: 700;
   margin-bottom: 0rem !important;
+}
+
+.my-over {
+  z-index: 199;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  
+}
+
+.container {
+  position: relative;
+}
+
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

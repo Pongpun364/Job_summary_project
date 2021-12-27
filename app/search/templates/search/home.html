@@ -1,0 +1,13 @@
+{% extends 'search/base.html'%}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href={% static "css/home_page.css" %}>
+{% endblock styles %}
+
+{% block content %}
+{% for post in post %}
+    <div class="container bg-white">
+        <p>{{ post.body|safe }}</p>
+    </div>
+{% endfor %}
+{% endblock content %}

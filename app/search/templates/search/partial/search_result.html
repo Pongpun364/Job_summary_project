@@ -4,7 +4,7 @@
 
 {% if obj != None %}
 <ul  class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <li class="list-group-item d-flex justify-content-between align-items-center shadow">
     <a href="{{ obj.get_absolute_url}} ">{{obj}}</a>
     {% if obj.job_result %}
     <span class="badge badge-success badge-pill">Ready !</span>

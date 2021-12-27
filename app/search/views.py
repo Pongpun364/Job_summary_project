@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from .models import Job
+from .models import Job, TextTemplate
 from .utils import parse_data
 from django.contrib import messages
 from .services import post_job_request,update_models
@@ -8,7 +8,8 @@ from .services import post_job_request,update_models
 
 
 def Home(request):
-    return render(request, 'search/base.html')
+    obj = TextTemplate.objects.all()
+    return render(request, 'search/home.html', {"post": obj})
 
 def search_snippet(request):
     snippet = "search/partial/search_result.html"

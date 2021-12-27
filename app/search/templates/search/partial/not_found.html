@@ -1,4 +1,4 @@
-<div class="d-flex flex-row not-found">
+<div class="d-flex flex-row not-found shadow">
     <div class="p-2">Search result for <p class="s-text">{{ request.GET.q }}</p> is not found. Do you want to make a request ?</div>
     <div class="p-2 ml-auto mt-auto">
         <button type="button" class="btn btn-primary" hx-post="/get-job/" hx-include="#search-key"

@@ -17,5 +17,6 @@ class Job(models.Model):
         return reverse("search:graph-result", kwargs={"word": self.job_search})
     
     
-
+class TextTemplate(models.Model):
+    body = models.TextField()
 
